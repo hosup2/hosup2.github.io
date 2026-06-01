@@ -4,95 +4,95 @@ import { SkillBar } from '../components/ui/SkillBar';
 
 export function Intro() {
   return (
-    <div className="px-12 py-10 max-w-3xl">
-      {/* Hero */}
-      <div className="mb-14">
-        <p className="text-xs tracking-widest text-sky-400 uppercase mb-4">INTRO</p>
-        <h1 className="text-5xl font-bold text-slate-50 leading-tight mb-4">
-          안녕하세요,
-          <br />
-          김동현입니다.
-        </h1>
-        <div className="w-12 h-0.5 bg-gradient-to-r from-sky-400 to-indigo-400 mb-6" />
-        <p className="text-slate-400 text-base leading-relaxed">
-          안정성과 확장성을 함께 고민하는 풀스택 개발자입니다.
-        </p>
+    <div className="h-full overflow-y-auto">
+      <div className="max-w-3xl mx-auto px-8">
+
+        <section className="flex items-center gap-10 py-16 border-b border-[var(--bd)]">
+          <img src="./pic.jpg" alt="김동현"
+            className="w-32 h-32 rounded-full object-cover object-top shrink-0 border-2 border-slate-200" />
+          <div>
+            <p className="text-xs tracking-widest text-indigo-600 uppercase mb-3">INTRO</p>
+            <h1 className="text-4xl font-bold leading-tight mb-3">
+              안녕하세요,{' '}
+              <span className="bg-gradient-to-r from-slate-900 to-indigo-600 bg-clip-text text-transparent">
+                김동현입니다.
+              </span>
+            </h1>
+            <div className="w-10 h-0.5 bg-gradient-to-r from-indigo-500 to-sky-400 mb-4" />
+            <p className="text-slate-500 text-sm leading-relaxed">
+              안정성과 확장성을 함께 고민하는 풀스택 개발자입니다.
+            </p>
+          </div>
+        </section>
+
+        <section className="py-12 border-b border-[var(--bd)]">
+          <SectionTitle label="자기소개" />
+          <p className="text-slate-600 text-sm leading-loose">
+            백엔드 설계부터 프론트엔드 구현까지 서비스 전 과정을 경험한 풀스택 개발자입니다.
+            물리학 전공으로 쌓은 문제 분석력을 바탕으로, 복잡한 시스템을 단순하고 명확하게 설계하는 것을 추구합니다.
+          </p>
+          <p className="text-slate-600 text-sm leading-loose mt-3">
+            설계한 구조가 운영 환경에서 예상대로 동작하는 순간,
+            그리고 작은 선택 하나가 서비스 경험 전체를 바꾸는 순간이 좋습니다.
+            문제의 본질을 파고들어 구조적으로 해결했을 때의 성취감이 개발을 계속하게 만드는 이유입니다.
+          </p>
+        </section>
+
+        <section className="py-12 border-b border-[var(--bd)]">
+          <SectionTitle label="주요 기술" />
+          <div className="flex flex-col gap-3">
+            <SkillBar name="Java / Spring Boot" level={2} variant="blue"
+              note="Spring Security · JPA · Flyway · Redis"
+              capabilities={[
+                'Spring Security 기반 JWT 인증·인가 필터 체인 설계 및 구현 가능',
+                'RBAC 4단계 역할 계층 설계 및 @PreAuthorize 커스텀 평가기 작성 가능',
+                'JPA 엔티티 관계 모델링, Flyway DB 마이그레이션 관리 가능',
+                '대규모 트래픽 처리·쿼리 최적화 등 심화 영역은 추가 학습 필요',
+              ]} />
+            <SkillBar name="React / Next.js" level={3} variant="indigo"
+              note="React 19 · Next.js App Router · TanStack Query · Zustand"
+              capabilities={[
+                'TanStack Query query key 전략 설계, 낙관적 업데이트, 무한 스크롤 구현 가능',
+                'Zustand store 분리·partialize persist, 커스텀 이벤트 기반 상태 동기화 가능',
+                'Next.js App Router 구조 설계, RSC/Client Component 경계 관리 가능',
+                'HttpOnly Cookie 기반 SSR 인증 구조 등 심화 SSR 설계는 경험 보완 중',
+              ]} />
+            <SkillBar name="TypeScript" level={3} variant="indigo"
+              note="제네릭 · 유틸리티 타입 · 도메인 타입 설계"
+              capabilities={[
+                'API 요청·응답 타입 도메인별 분리, Adapter 패턴으로 UI 모델 격리 가능',
+                '제네릭·유틸리티 타입(Partial, Pick, Record 등) 활용 가능',
+                '복잡한 조건부 타입·infer 기반 타입 추론 시스템은 추가 경험 필요',
+              ]} />
+            <SkillBar name="MySQL / Redis" level={2} variant="blue"
+              note="인덱스 설계 · Refresh Token Rotation · 원자 연산"
+              capabilities={[
+                'Redis GETDEL 원자 연산으로 Refresh Token Rotation 레이스 컨디션 방어 구현 가능',
+                'Redis TTL 기반 블랙리스트, Rate Limiting, 캐시 무효화 패턴 적용 가능',
+                '기본 인덱스 설계 가능, 복잡한 실행 계획 분석·쿼리 튜닝은 추가 학습 필요',
+              ]} />
+          </div>
+        </section>
+
+        <section className="py-12 border-b border-[var(--bd)]">
+          <SectionTitle label="기본 정보" />
+          <div className="grid grid-cols-3 gap-3">
+            <InfoCard label="생년월일">1999.11.16</InfoCard>
+            <InfoCard label="희망 직무">풀스택 개발자</InfoCard>
+            <InfoCard label="전화번호">010-5646-7557</InfoCard>
+            <InfoCard label="이메일">dosl196122@naver.com</InfoCard>
+            <InfoCard label="학력">국립 공주대학교<br />데이터정보물리학과<br />2018.03 ~ 2025.02</InfoCard>
+            <InfoCard label="경력">삼성청년소프트웨어아카데미<br />SSAFY 14기<br />2025.07 ~ 2026.06</InfoCard>
+          </div>
+        </section>
+
+        <section className="py-12">
+          <a href="https://github.com/hosup2" target="_blank" rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 border border-indigo-300 text-indigo-600 text-sm rounded-lg hover:bg-indigo-50 transition-colors">
+            GitHub ↗
+          </a>
+        </section>
       </div>
-
-      {/* 자기소개 */}
-      <section className="mb-12">
-        <SectionTitle label="자기소개" />
-        <p className="text-slate-400 text-sm leading-relaxed">
-          백엔드 설계부터 프론트엔드 구현, 인프라 배포까지 서비스 전 과정을 경험해온 풀스택 개발자입니다.
-          B2B SaaS 플랫폼에서는 멀티테넌트 인증·인가 아키텍처를 설계하고,
-          AI 뉴스 플랫폼에서는 무한 스크롤·워드클라우드 같은 복잡한 인터랙티브 UI를 구현했습니다.
-          실시간 협업 에디터에서는 Adapter 패턴으로 백엔드 응답과 프론트 모델을 분리하고,
-          Zustand로 여러 레이어의 클라이언트 상태를 구조화했습니다.
-          물리학 전공을 통해 길러진 문제 분석력을 바탕으로,
-          복잡한 시스템을 단순하고 명확하게 설계하는 것을 추구합니다.
-        </p>
-      </section>
-
-      {/* 개발이 좋은 이유 */}
-      <section className="mb-12">
-        <SectionTitle label="개발이 좋은 이유" />
-        <p className="text-slate-400 text-sm leading-relaxed">
-          내가 작성한 코드가 실제 사용자의 문제를 해결하는 순간이 좋습니다.
-          설계 단계에서 고민한 구조가 운영 환경에서 예상대로 동작할 때의 만족감,
-          그리고 예상치 못한 문제를 파고들어 원인을 찾아냈을 때의 성취감이 개발을 계속하게 만드는 이유입니다.
-          Redis 원자 연산 하나로 토큰 탈취 취약점을 막을 때도,
-          피보나치 나선 알고리즘으로 워드클라우드 키워드를 균형 있게 배치할 때도,
-          partialize 옵션 하나로 새로고침 후 상태 불일치 버그를 해결할 때도 —
-          작은 선택 하나가 서비스 경험 전체를 바꾼다는 것을 프로젝트마다 다시 배웠습니다.
-        </p>
-      </section>
-
-      {/* 주요 기술 */}
-      <section className="mb-12">
-        <SectionTitle label="주요 기술" />
-        <div className="flex flex-col gap-4">
-          <SkillBar name="Java / Spring Boot" level={3} variant="blue" note="Spring Security, JPA, 멀티모듈" />
-          <SkillBar name="React / TypeScript" level={4} variant="indigo" note="Vite, React Query, Zustand" />
-          <SkillBar name="MySQL / Redis" level={3} variant="blue" note="인덱스 설계, 캐시 전략, 원자 연산" />
-        </div>
-      </section>
-
-      {/* 기본 정보 */}
-      <section className="mb-12">
-        <SectionTitle label="기본 정보" />
-        <div className="grid grid-cols-2 gap-3">
-          <InfoCard label="생년월일">1999.11.16</InfoCard>
-          <InfoCard label="희망 직무">풀스택 개발자</InfoCard>
-          <InfoCard label="이메일">dosl196122@naver.com</InfoCard>
-          <InfoCard label="전화번호">010-5646-7557</InfoCard>
-          <InfoCard label="학력">
-            국립 공주대학교
-            <br />
-            데이터정보물리학과
-            <br />
-            2018.03 ~ 2025.02
-          </InfoCard>
-          <InfoCard label="경력">
-            삼성청년소프트웨어아카데미
-            <br />
-            SSAFY 14기
-            <br />
-            2025.07 ~ 2026.06
-          </InfoCard>
-        </div>
-      </section>
-
-      {/* GitHub */}
-      <section>
-        <a
-          href="https://github.com/hosup2"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 border border-sky-400/40 text-sky-400 text-sm rounded hover:bg-sky-400/10 transition-colors"
-        >
-          GitHub ↗
-        </a>
-      </section>
     </div>
   );
 }
