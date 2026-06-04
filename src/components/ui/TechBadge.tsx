@@ -6,7 +6,7 @@ import {
   SiDocker, SiKubernetes, SiArgo, SiGitlab,
   SiPrometheus, SiGrafana,
   SiApachekafka, SiApachespark, SiApacheairflow, SiClickhouse,
-  SiPython, SiFastapi,
+  SiFastapi,
   SiReactquery, SiAnthropic,
 } from 'react-icons/si';
 import type { IconType } from 'react-icons';
