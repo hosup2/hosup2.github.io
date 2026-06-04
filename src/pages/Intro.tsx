@@ -85,9 +85,13 @@ export function Intro() {
           <SectionTitle label="기본 정보" />
           <div className="grid grid-cols-3 gap-3">
             <InfoCard label="생년월일">1999.11.16</InfoCard>
-            <InfoCard label="희망 직무">풀스택 개발자</InfoCard>
-            <InfoCard label="전화번호">010-5646-7557</InfoCard>
-            <InfoCard label="이메일">dosl196122@naver.com</InfoCard>
+            <InfoCard label="희망 직무">백엔드 개발자</InfoCard>
+            <InfoCard label="자격증">SQLD<br />2025.04.04</InfoCard>
+            <InfoCard label="이메일">
+              <a href="mailto:dosl196122@naver.com" className="hover:text-indigo-600 transition-colors">
+                dosl196122@naver.com
+              </a>
+            </InfoCard>
             <InfoCard label="학력">국립 공주대학교<br />데이터정보물리학과<br />2018.03 ~ 2025.02</InfoCard>
             <InfoCard label="경력">삼성청년소프트웨어아카데미<br />SSAFY 14기<br />2025.07 ~ 2026.06</InfoCard>
           </div>
