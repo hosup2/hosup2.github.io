@@ -38,9 +38,12 @@ const ONBOARDING_FLOW = `sequenceDiagram
     A-->>E: 로그인 가능`;
 
 const STACK_GROUPS = [
-  { label: '프론트엔드', badges: ['React 18', 'TypeScript 5.6', 'Vite 5', 'Zustand', 'React Query'] },
-  { label: '백엔드',     badges: ['Java 21', 'Spring Boot 3.5', 'Spring Security', 'JPA', 'Flyway'] },
-  { label: 'DB / 캐시',  badges: ['MySQL 8.0', 'Redis 7'] },
+  { label: '프론트엔드',   badges: ['React 18', 'TypeScript 5.6', 'Vite 5', 'Zustand', 'React Query'] },
+  { label: '백엔드',       badges: ['Java 21', 'Spring Boot 3.5', 'Spring Security', 'JPA', 'Flyway'] },
+  { label: 'DB / 캐시',    badges: ['MySQL 8.0', 'Redis 7', 'ClickHouse 24.8'] },
+  { label: '메시지 브로커', badges: ['Apache Kafka 3.7'] },
+  { label: '인프라',       badges: ['Docker', 'Kubernetes (K3s)', 'Kustomize', 'ArgoCD', 'GitLab CI/CD'] },
+  { label: '모니터링',     badges: ['Prometheus', 'Grafana', 'Loki'] },
 ];
 
 const slides: Slide[] = [

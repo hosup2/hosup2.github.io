@@ -6,9 +6,12 @@ import { TechBadge } from '../components/ui/TechBadge';
 import { IntroSplashMini, WordCloudMini } from '../components/ui/AiRadarDemo';
 
 const STACK_GROUPS = [
-  { label: '프론트엔드', badges: ['Next.js 16 (App Router)', 'React 19', 'TypeScript'] },
-  { label: '스타일링',   badges: ['Tailwind CSS v4', 'Framer Motion'] },
-  { label: '기타',       badges: ['TanStack Query v5', 'Recharts', 'Axios', 'next-themes'] },
+  { label: '프론트엔드', badges: ['Next.js 16 (App Router)', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Framer Motion', 'TanStack Query v5', 'Recharts'] },
+  { label: '백엔드',     badges: ['Java 17', 'Spring Boot 3.3.5', 'Python FastAPI'] },
+  { label: '데이터',     badges: ['Apache Spark 3.5.0', 'Apache Kafka', 'Apache Airflow 2.8.3', 'Delta Lake', 'MinIO'] },
+  { label: 'AI',         badges: ['Claude Haiku', 'sentence-transformers', 'pgvector'] },
+  { label: 'DB / 캐시',  badges: ['PostgreSQL 16', 'Redis 7'] },
+  { label: '인프라',     badges: ['Docker', 'Docker Compose'] },
 ];
 
 const slides: Slide[] = [

@@ -20,7 +20,7 @@ export function Intro() {
             </h1>
             <div className="w-10 h-0.5 bg-gradient-to-r from-indigo-500 to-sky-400 mb-4" />
             <p className="text-slate-500 text-sm leading-relaxed">
-              안정성과 확장성을 함께 고민하는 풀스택 개발자입니다.
+              백엔드를 주력으로, 서비스 전체 흐름을 함께 고민하는 개발자입니다.
             </p>
           </div>
         </section>
@@ -28,7 +28,7 @@ export function Intro() {
         <section className="py-12 border-b border-[var(--bd)]">
           <SectionTitle label="자기소개" />
           <p className="text-slate-600 text-sm leading-loose">
-            백엔드 설계부터 프론트엔드 구현까지 서비스 전 과정을 경험한 풀스택 개발자입니다.
+            주력은 백엔드이며, 프론트엔드 경험을 통해 서비스 전체 흐름을 함께 이해하는 개발자입니다.
             물리학 전공으로 쌓은 문제 분석력을 바탕으로, 복잡한 시스템을 단순하고 명확하게 설계하는 것을 추구합니다.
           </p>
           <p className="text-slate-600 text-sm leading-loose mt-3">
@@ -41,6 +41,13 @@ export function Intro() {
         <section className="py-12 border-b border-[var(--bd)]">
           <SectionTitle label="주요 기술" />
           <div className="flex flex-col gap-3">
+            <SkillBar name="Python / Django" level={3} variant="blue"
+              note="언어 기초 · 알고리즘 · Django REST Framework"
+              capabilities={[
+                'Python 기초 문법·자료구조·알고리즘 구현 가능 (백준·SWEA 문제 풀이)',
+                'Django REST Framework로 API 서버 설계·ORM·Serializer 활용 가능',
+                'AI·ML 기초 실습 및 공통 프로젝트 백엔드 참여 경험',
+              ]} />
             <SkillBar name="Java / Spring Boot" level={2} variant="blue"
               note="Spring Security · JPA · Flyway · Redis"
               capabilities={[

@@ -5,9 +5,12 @@ import { SlideShow, type Slide } from '../components/ui/SlideShow';
 import { TechBadge } from '../components/ui/TechBadge';
 
 const STACK_GROUPS = [
-  { label: '프론트엔드', badges: ['React 18', 'TypeScript', 'Vite'] },
+  { label: '프론트엔드', badges: ['React 18', 'TypeScript', 'Vite', 'Electron'] },
+  { label: '에디터',     badges: ['Tiptap', 'CodeMirror', 'Yjs', 'ReactFlow'] },
   { label: '상태관리',   badges: ['Zustand'] },
-  { label: '기타',       badges: ['Axios', 'react-router-dom', 'dayjs'] },
+  { label: '백엔드',     badges: ['Java 17', 'Spring Boot 3.5', 'Spring Security', 'JPA'] },
+  { label: 'DB / 캐시',  badges: ['PostgreSQL', 'MongoDB', 'Redis'] },
+  { label: '기타',       badges: ['WebSocket (STOMP)', 'Kurento (WebRTC)', 'AWS S3', 'JWT'] },
 ];
 
 const STORES = [
