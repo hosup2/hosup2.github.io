@@ -13,7 +13,7 @@ export function TopNav() {
       <div className="flex items-center gap-3">
         <span className="text-indigo-600 font-bold text-lg tracking-tight">김동현</span>
         <span className="text-slate-300 text-xs">|</span>
-        <span className="text-slate-400 text-sm">Fullstack Developer</span>
+        <span className="text-slate-400 text-sm">Backend Developer</span>
       </div>
 
       <nav className="ml-auto flex items-center">

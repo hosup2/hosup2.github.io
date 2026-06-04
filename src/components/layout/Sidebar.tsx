@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 const navItems = [
   { to: '/', label: 'Intro', icon: '👤', sub: '김동현', end: true },
   { to: '/butterfly', label: 'Butterfly', icon: '🦋', sub: 'B2B CRM SaaS', end: false },
-  { to: '/airadar', label: 'AiRadar', icon: '📡', sub: 'AI 인텔리전스', end: false },
-  { to: '/synapse', label: 'Synapse', icon: '🧠', sub: '협업 에디터', end: false },
+  { to: '/airadar', label: 'AiRadar', icon: '📡', sub: 'AI 기술 트렌드 플랫폼', end: false },
+  { to: '/synapse', label: 'Synapse', icon: '🧠', sub: '코드 기반 협업 툴', end: false },
 ];
 
 export function Sidebar() {
@@ -12,7 +12,7 @@ export function Sidebar() {
     <aside className="w-56 min-h-screen bg-[#0a1628] border-r border-[#1e3a5f] flex flex-col sticky top-0 shrink-0">
       <div className="px-6 py-7 border-b border-[#1e3a5f]">
         <p className="text-sky-400 text-xl font-bold tracking-tight">김동현</p>
-        <p className="text-slate-500 text-xs mt-1">Fullstack Developer</p>
+        <p className="text-slate-500 text-xs mt-1">Backend Developer</p>
       </div>
 
       <nav className="flex-1 py-4">
