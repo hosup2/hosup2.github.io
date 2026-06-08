@@ -1,9 +1,9 @@
 const LEVEL_LABEL: Record<number, { label: string; color: string }> = {
-  1: { label: '입문', color: 'text-slate-400' },
-  2: { label: '하',   color: 'text-sky-600'   },
-  3: { label: '중',   color: 'text-indigo-600' },
-  4: { label: '상',   color: 'text-violet-600' },
-  5: { label: '숙련', color: 'text-emerald-600' },
+  1: { label: '하',   color: 'text-slate-400'   },
+  2: { label: '중하', color: 'text-sky-600'     },
+  3: { label: '중',   color: 'text-indigo-600'  },
+  4: { label: '중상', color: 'text-violet-600'  },
+  5: { label: '상',   color: 'text-emerald-600' },
 };
 
 export function SkillBar({
