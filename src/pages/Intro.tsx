@@ -14,7 +14,7 @@ export function Intro() {
             <p className="text-xs tracking-widest text-indigo-600 uppercase mb-3">INTRO</p>
             <h1 className="text-4xl font-bold leading-tight mb-3">
               안녕하세요,{' '}
-              <span className="bg-gradient-to-r from-slate-900 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-slate-900 to-indigo-600 bg-clip-text">
                 김동현입니다.
               </span>
             </h1>
