@@ -71,8 +71,36 @@ const slides: Slide[] = [
               </div>
             ))}
           </div>
+          <div className="mt-4 bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
+            <h3 className="text-slate-700 text-xs font-semibold mb-2 uppercase tracking-widest">기술 선택 근거</h3>
+            <ul className="text-slate-600 text-xs leading-relaxed space-y-1.5">
+              <li>• <strong className="text-slate-700">Kafka</strong> — 고객 행동 이벤트를 비동기로 수집·처리, 이벤트 유실 없이 백프레셔 관리 가능</li>
+              <li>• <strong className="text-slate-700">ClickHouse</strong> — 캠페인 성과·세그먼트 집계 등 OLAP 쿼리에 특화된 컬럼형 DB, MySQL 대비 대용량 집계 성능 우위</li>
+              <li>• <strong className="text-slate-700">K3s + ArgoCD</strong> — GitOps 방식으로 멀티 모듈 서비스 배포·관리, Kustomize로 환경별 설정 분리</li>
+            </ul>
+          </div>
         </section>
       </>
+    ),
+  },
+  {
+    label: '아키텍처',
+    fullWidth: true,
+    content: (
+      <div className="space-y-4">
+        <div className="rounded-lg overflow-hidden border border-[var(--bd)]">
+          <img src="./screenshots/butterfly-architecture.png" alt="Butterfly 아키텍처" className="w-full h-auto" />
+        </div>
+        <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
+          <h3 className="text-slate-800 text-sm font-bold mb-2">내 기여 영역 — 인증·인가 & 온보딩</h3>
+          <ul className="text-slate-600 text-sm leading-relaxed space-y-1.5">
+            <li>• <strong className="text-slate-700">butterfly-auth</strong> — JWT 이중 구조, Refresh Token Rotation, 블랙리스트, API Key 인증, RBAC 4단계 설계</li>
+            <li>• <strong className="text-slate-700">butterfly-tenant</strong> — 기업 신청·승인·초대 온보딩 플로우, 팀원 라이프사이클, 소프트 딜리트</li>
+            <li>• <strong className="text-slate-700">Row-level 격리</strong> — @SQLRestriction 전역 필터 + @PreAuthorize 이중 방어로 테넌트 간 데이터 격리</li>
+            <li>• <strong className="text-slate-700">Port/Adapter 패턴</strong> — 모듈 간 순환 의존 제거, CompanyAuthPort 인터페이스로 의존 방향 역전</li>
+          </ul>
+        </div>
+      </div>
     ),
   },
   {
@@ -91,6 +119,14 @@ const slides: Slide[] = [
               <li>• SDK용 API Key 인증 (<code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">pk_live_</code> 형식, SHA-256 해시 저장) + Rate Limiting (429 + Retry-After)</li>
               <li>• <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">ADMIN &gt; OWNER &gt; EDITOR &gt; VIEWER</code> 4단계 역할 계층 RBAC 설계</li>
               <li>• SpEL <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">@PreAuthorize</code> 커스텀 평가기 — Redis 5분 TTL 캐시, 역할 변경 시 즉시 무효화</li>
+            </ul>
+          </div>
+          <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4 mt-3">
+            <h3 className="text-slate-700 text-xs font-semibold mb-2 uppercase tracking-widest">기술 선택 근거</h3>
+            <ul className="text-slate-600 text-xs leading-relaxed space-y-1.5">
+              <li>• <strong className="text-slate-700">Redis — Refresh Token 저장소</strong>: DB 조회 없이 O(1) TTL 기반 조회·자동 만료, GETDEL 원자 연산으로 레이스 컨디션 원천 차단</li>
+              <li>• <strong className="text-slate-700">Access 30분 / Refresh 7일</strong>: 짧은 Access로 탈취 시 피해 최소화, 긴 Refresh로 재로그인 없는 UX 균형</li>
+              <li>• <strong className="text-slate-700">SHA-256 API Key 저장</strong>: 평문 DB 저장 시 유출 = 전체 키 노출 → 해시로 비교는 가능하되 원본 복원 불가</li>
             </ul>
           </div>
         </section>
@@ -121,7 +157,7 @@ const slides: Slide[] = [
             <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
               <h3 className="text-slate-800 text-sm font-bold mb-2">모듈 설계</h3>
               <ul className="text-slate-600 text-sm leading-relaxed space-y-2">
-                <li>• <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">CompanyAuthPort</code> + <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">CompanyAuthAdapter</code> Port/Adapter 패턴으로 모듈 간 순환 의존 제거</li>
+                <li>• <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">CompanyAuthPort</code> + <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">CompanyAuthAdapter</code> Port/Adapter 패턴 — 인증·테넌트 모듈이 직접 의존하면 순환 참조 발생, 인터페이스(Port)로 의존 방향을 역전해 해결</li>
                 <li>• <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">ApiKeyValidator</code> SPI 동일 구조 적용</li>
               </ul>
             </div>
@@ -139,19 +175,45 @@ const slides: Slide[] = [
     fullWidth: true,
     content: (
       <section>
-        <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-6 space-y-5">
-          <h3 className="text-slate-800 text-sm font-semibold">Refresh Token 레이스 컨디션</h3>
-          <div><p className="text-slate-500 text-xs mb-1">문제</p><p className="text-slate-600 text-sm">동시 요청 시 두 요청 모두 갱신에 성공하는 레이스 컨디션 취약점</p></div>
-          <FlowPipeline title="취약한 구조 (GET + DELETE 분리)" accentClass="text-violet-600" rows={[
-            { prefix: '요청 A', steps: ['GET', '토큰 읽기 성공'], outcome: '새 토큰 발급', outcomeStatus: 'danger' },
-            { prefix: '요청 B', steps: ['GET', '토큰 읽기 성공'], outcome: '새 토큰 발급', outcomeStatus: 'danger' },
-          ]} note="둘 다 유효한 새 토큰 발급 → 토큰 탈취 취약" />
-          <div><p className="text-slate-500 text-xs mb-1">원인</p><p className="text-slate-600 text-sm">Redis GET + DELETE 분리 시 두 요청 사이에 원자성 보장 안 됨</p></div>
-          <FlowPipeline title="해결: GETDEL 원자 연산" accentClass="text-violet-600" rows={[
-            { prefix: '요청 A', steps: ['GETDEL', '토큰 반환 + 즉시 삭제'], outcome: '새 토큰 발급', outcomeStatus: 'success' },
-            { prefix: '요청 B', steps: ['GETDEL', 'null 반환'], outcome: '401 차단', outcomeStatus: 'danger' },
-          ]} />
-          <div><p className="text-slate-500 text-xs mb-1">효과</p><p className="text-slate-600 text-sm">토큰 탈취 후 재사용 감지 및 즉시 세션 무효화 보장</p></div>
+        <div className="space-y-4">
+          <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-6 space-y-5">
+            <h3 className="text-slate-800 text-sm font-semibold">Refresh Token 레이스 컨디션</h3>
+            <div><p className="text-slate-500 text-xs mb-1">문제</p><p className="text-slate-600 text-sm">동시 요청 시 두 요청 모두 갱신에 성공하는 레이스 컨디션 취약점</p></div>
+            <FlowPipeline title="취약한 구조 (GET + DELETE 분리)" accentClass="text-violet-600" rows={[
+              { prefix: '요청 A', steps: ['GET', '토큰 읽기 성공'], outcome: '새 토큰 발급', outcomeStatus: 'danger' },
+              { prefix: '요청 B', steps: ['GET', '토큰 읽기 성공'], outcome: '새 토큰 발급', outcomeStatus: 'danger' },
+            ]} note="둘 다 유효한 새 토큰 발급 → 토큰 탈취 취약" />
+            <div><p className="text-slate-500 text-xs mb-1">원인</p><p className="text-slate-600 text-sm">Redis GET + DELETE 분리 시 두 요청 사이에 원자성 보장 안 됨</p></div>
+            <FlowPipeline title="해결: GETDEL 원자 연산" accentClass="text-violet-600" rows={[
+              { prefix: '요청 A', steps: ['GETDEL', '토큰 반환 + 즉시 삭제'], outcome: '새 토큰 발급', outcomeStatus: 'success' },
+              { prefix: '요청 B', steps: ['GETDEL', 'null 반환'], outcome: '401 차단', outcomeStatus: 'danger' },
+            ]} />
+            <div><p className="text-slate-500 text-xs mb-1">효과</p><p className="text-slate-600 text-sm">토큰 탈취 후 재사용 감지 및 즉시 세션 무효화 보장</p></div>
+          </div>
+
+          <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-6 space-y-4">
+            <h3 className="text-slate-800 text-sm font-semibold">JWT + API Key 인증 공존 — Spring Security 필터 충돌</h3>
+            <div><p className="text-slate-500 text-xs mb-1">문제</p><p className="text-slate-600 text-sm">SDK API Key 요청에 JWT 필터가 먼저 실행되면서 <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">Authorization: Bearer</code> 헤더가 없다는 이유로 401 반환</p></div>
+            <FlowPipeline title="충돌 구조" accentClass="text-violet-600" rows={[
+              { prefix: '이전', prefixColor: 'amber', steps: ['X-Api-Key 요청', 'JWT 필터 실행', 'Bearer 없음'], outcome: '401 차단', outcomeStatus: 'danger' },
+              { prefix: '이후', prefixColor: 'sky',   steps: ['X-Api-Key 감지', 'JWT 필터 건너뜀', 'ApiKey 필터 처리'], outcome: '인증 성공', outcomeStatus: 'success' },
+            ]} />
+            <div><p className="text-slate-500 text-xs mb-1">원인</p><p className="text-slate-600 text-sm">단일 필터 체인에서 두 인증 방식의 분기 미설정 — JWT 파싱 실패 시 즉시 거부</p></div>
+            <div><p className="text-slate-500 text-xs mb-1">해결</p><p className="text-slate-600 text-sm">요청 헤더 타입으로 분기 (<code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">X-Api-Key</code> 헤더 존재 시 JWT 필터 패스, API Key 전용 <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">OncePerRequestFilter</code> 별도 등록)</p></div>
+            <div><p className="text-slate-500 text-xs mb-1">효과</p><p className="text-slate-600 text-sm">JWT 인증과 API Key 인증이 충돌 없이 동일 엔드포인트에서 공존, SDK 통합 정상화</p></div>
+          </div>
+
+          <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-6 space-y-4">
+            <h3 className="text-slate-800 text-sm font-semibold">멀티테넌트 데이터 격리 — 수동 projectId 필터 누락</h3>
+            <div><p className="text-slate-500 text-xs mb-1">문제</p><p className="text-slate-600 text-sm">신규 API 추가 시 서비스 레이어에 projectId 조건 누락 → 타 테넌트 데이터 반환 가능</p></div>
+            <FlowPipeline title="구조 개선" accentClass="text-violet-600" rows={[
+              { prefix: '이전', prefixColor: 'amber', steps: ['신규 API 추가', 'projectId 수동 추가', '누락 가능'], outcome: '데이터 노출', outcomeStatus: 'danger' },
+              { prefix: '이후', prefixColor: 'sky',   steps: ['@SQLRestriction', '모든 엔티티 자동 적용'], outcome: '격리 보장', outcomeStatus: 'success' },
+            ]} />
+            <div><p className="text-slate-500 text-xs mb-1">원인</p><p className="text-slate-600 text-sm">서비스 레이어마다 수동으로 projectId 필터를 추가해야 하는 구조 — 휴먼 에러 시 격리 파괴</p></div>
+            <div><p className="text-slate-500 text-xs mb-1">해결</p><p className="text-slate-600 text-sm"><code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">@SQLRestriction</code> JPA 전역 필터로 모든 엔티티에 projectId 조건 자동 적용, <code className="text-violet-600 bg-violet-50 px-1 rounded text-xs font-mono">@PreAuthorize</code> 인가 이중 방어 추가</p></div>
+            <div><p className="text-slate-500 text-xs mb-1">효과</p><p className="text-slate-600 text-sm">서비스 레이어 실수로 인한 테넌트 간 데이터 노출을 구조적으로 차단, 신규 API 추가 시에도 격리 자동 보장</p></div>
+          </div>
         </div>
       </section>
     ),

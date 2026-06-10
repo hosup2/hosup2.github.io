@@ -22,6 +22,11 @@ export function Intro() {
             <p className="text-slate-500 text-sm leading-relaxed">
               백엔드를 주력으로, 서비스 전체 흐름을 함께 고민하는 개발자입니다.
             </p>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {['백엔드개발자', '인증·보안설계', '풀스택'].map(kw => (
+                <span key={kw} className="text-xs px-2.5 py-1 rounded-full border font-medium text-indigo-600 bg-indigo-50 border-indigo-200">#{kw}</span>
+              ))}
+            </div>
           </div>
         </section>
 

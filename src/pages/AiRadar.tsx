@@ -39,8 +39,36 @@ const slides: Slide[] = [
               </div>
             ))}
           </div>
+          <div className="mt-4 bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
+            <h3 className="text-slate-700 text-xs font-semibold mb-2 uppercase tracking-widest">기술 선택 근거</h3>
+            <ul className="text-slate-600 text-xs leading-relaxed space-y-1.5">
+              <li>• <strong className="text-slate-700">Next.js (App Router)</strong> — AI 뉴스·논문 콘텐츠 서비스 특성상 SEO와 초기 렌더링 속도가 핵심 요구사항이라 선택. localStorage JWT로 인해 실제 SSR이 제한된 한계는 트러블슈팅에서 설명</li>
+              <li>• <strong className="text-slate-700">TanStack Query</strong> — 지역·날짜·카테고리 필터 조합이 많아 query key에 포함하면 필터별 캐시 자동 분리, 별도 무효화 로직 불필요</li>
+              <li>• <strong className="text-slate-700">IntersectionObserver</strong> — scroll 이벤트 폴링 대비 브라우저 네이티브 최적화 API, 메인 스레드 부하 없이 무한 스크롤 구현</li>
+            </ul>
+          </div>
         </section>
       </>
+    ),
+  },
+  {
+    label: '아키텍처',
+    fullWidth: true,
+    content: (
+      <div className="space-y-4">
+        <div className="rounded-lg overflow-hidden border border-[var(--bd)]">
+          <img src="./screenshots/airadar-architecture.png" alt="AiRadar 아키텍처" className="w-full h-auto" />
+        </div>
+        <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
+          <h3 className="text-slate-800 text-sm font-bold mb-2">내 기여 영역 — Frontend</h3>
+          <ul className="text-slate-600 text-sm leading-relaxed space-y-1.5">
+            <li>• <strong className="text-slate-700">인트로 스플래시 & 워드클라우드</strong> — 순수 CSS keyframes + 피보나치 나선 알고리즘으로 인터랙티브 UI 구현</li>
+            <li>• <strong className="text-slate-700">뉴스·논문 피드</strong> — TanStack Query 무한 스크롤, 필터별 캐시 분리, ALS 개인화 추천 연동</li>
+            <li>• <strong className="text-slate-700">JWT 인증 시스템</strong> — Axios 인터셉터 자동 갱신, 커스텀 이벤트 기반 로그아웃 동기화</li>
+            <li>• <strong className="text-slate-700">이벤트 트래킹</strong> — Fire-and-Forget 패턴, 체류 시간 측정, 낙관적 업데이트</li>
+          </ul>
+        </div>
+      </div>
     ),
   },
   {
@@ -82,9 +110,9 @@ const slides: Slide[] = [
           <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
             <h3 className="text-slate-800 text-sm font-bold mb-2">워드클라우드 구현 포인트</h3>
             <ul className="text-slate-600 text-xs leading-relaxed space-y-1">
-              <li>• 황금각 137.5° 피보나치 나선 배치 + AABB 충돌 감지로 키워드 겹침 방지</li>
-              <li>• requestAnimationFrame으로 레이더 빔 회전, 빔 통과 키워드 발광 강조</li>
-              <li>• conic-gradient + mask-image 조합으로 부채꼴 빔 궤적 표현</li>
+              <li>• 황금각 137.5° 피보나치 나선 배치로 트렌드 키워드를 자연스럽게 분산 → 사용자가 AI 핫이슈를 한눈에 파악</li>
+              <li>• AABB 충돌 감지로 키워드 겹침 방지, requestAnimationFrame 레이더 빔 회전으로 실시간 분석 느낌 연출</li>
+              <li>• conic-gradient + mask-image 조합으로 JS 라이브러리 없이 부채꼴 빔 궤적 표현, 초기 번들 사이즈 유지</li>
             </ul>
           </div>
         </div>
@@ -119,6 +147,14 @@ const slides: Slide[] = [
             <li>• Fire-and-Forget 패턴: 전 이벤트 API 호출을 await 없이 발송, 실패 무시로 UI 영향 제거</li>
             <li>• useArticleViewTracking: 마운트 시 Date.now() 기록, 언마운트 시 체류 시간 → article-view 이벤트 발송</li>
             <li>• 북마크 토글 낙관적 업데이트: API 응답 전 UI 먼저 변경, 실패 시 이전 상태 롤백</li>
+          </ul>
+        </div>
+        <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
+          <h3 className="text-slate-700 text-xs font-semibold mb-2 uppercase tracking-widest">기술 선택 근거</h3>
+          <ul className="text-slate-600 text-xs leading-relaxed space-y-1.5">
+            <li>• <strong className="text-slate-700">Next.js (App Router)</strong> — AI 뉴스·논문 콘텐츠 서비스 특성상 SEO와 초기 렌더링 속도가 핵심 요구사항이라 선택. localStorage JWT로 인해 CSR로 동작한 한계는 트러블슈팅에서 설명</li>
+            <li>• <strong className="text-slate-700">TanStack Query</strong> — 지역·날짜·카테고리 필터 조합이 많아 query key에 포함하면 필터별 캐시 자동 분리, 별도 무효화 로직 불필요</li>
+            <li>• <strong className="text-slate-700">IntersectionObserver 무한 스크롤</strong> — scroll 이벤트 폴링 대비 브라우저 네이티브 최적화 API, 메인 스레드 부하 없이 페이지 하단 감지</li>
           </ul>
         </div>
       </div>

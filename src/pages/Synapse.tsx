@@ -46,8 +46,36 @@ const slides: Slide[] = [
               </div>
             ))}
           </div>
+          <div className="mt-4 bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
+            <h3 className="text-slate-700 text-xs font-semibold mb-2 uppercase tracking-widest">기술 선택 근거</h3>
+            <ul className="text-slate-600 text-xs leading-relaxed space-y-1.5">
+              <li>• <strong className="text-slate-700">Electron</strong> — 코드 블록 로컬 실행·파일시스템 접근이 필요해 웹 앱 대신 데스크탑 앱으로 선택</li>
+              <li>• <strong className="text-slate-700">Zustand</strong> — 5개 store를 독립 분리하면서도 Redux 보일러플레이트 없이 유지, partialize로 persist 범위 세밀 제어</li>
+              <li>• <strong className="text-slate-700">Adapter 패턴</strong> — 초기 개발 중 백엔드 스펙 변경이 잦아 adapter 레이어만 수정하면 컴포넌트까지 파급되지 않는 구조 확보</li>
+            </ul>
+          </div>
         </section>
       </>
+    ),
+  },
+  {
+    label: '아키텍처',
+    fullWidth: true,
+    content: (
+      <div className="space-y-4">
+        <div className="rounded-lg overflow-hidden border border-[var(--bd)]">
+          <img src="./screenshots/synapse-architecture.png" alt="Synapse 아키텍처" className="w-full h-auto" />
+        </div>
+        <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
+          <h3 className="text-slate-800 text-sm font-bold mb-2">내 기여 영역 — Frontend</h3>
+          <ul className="text-slate-600 text-sm leading-relaxed space-y-1.5">
+            <li>• <strong className="text-slate-700">API 타입 시스템 & Adapter 레이어</strong> — 도메인별 요청/응답 타입 설계, 백엔드 스펙 변경 파급 차단</li>
+            <li>• <strong className="text-slate-700">전역 상태관리 (Zustand)</strong> — Auth·Note·Modal·Toast·Theme 5개 store 설계, partialize persist 전략</li>
+            <li>• <strong className="text-slate-700">Home 대시보드</strong> — 4개 섹션 병렬 fetch, 스트릭 히트맵, Silent Refresh</li>
+            <li>• <strong className="text-slate-700">Checkpoint 버전 관리</strong> — 슬롯 저장·복구, Diff 비교 뷰어</li>
+          </ul>
+        </div>
+      </div>
     ),
   },
   {
@@ -142,9 +170,9 @@ const slides: Slide[] = [
           <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
             <h3 className="text-slate-800 text-sm font-bold mb-2">Checkpoint 슬롯 관리</h3>
             <ul className="text-slate-600 text-sm leading-relaxed space-y-1.5">
-              <li>• CheckpointSidebar — 슬롯 목록 조회, 저장/복구 액션 처리</li>
-              <li>• CheckpointItem — 빈 슬롯 / 저장됨 상태 시각화, 저장 날짜 표시</li>
-              <li>• isProcessing overlay로 저장 중 중복 액션 방지</li>
+              <li>• 코드 편집 중 언제든 슬롯에 버전 저장 → 실수로 덮어쓴 내용을 Diff로 확인 후 안전하게 복구 가능</li>
+              <li>• 빈 슬롯·저장됨 상태 시각화로 현재 사용 가능한 슬롯 직관적 파악</li>
+              <li>• isProcessing overlay — 저장·복구 중 중복 클릭 차단으로 데이터 무결성 보장</li>
             </ul>
           </div>
           <div className="bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
