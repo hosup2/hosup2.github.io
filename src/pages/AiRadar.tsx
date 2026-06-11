@@ -42,7 +42,7 @@ const slides: Slide[] = [
           <div className="mt-4 bg-[var(--bg-sub)] border border-[var(--bd)] rounded-lg p-4">
             <h3 className="text-slate-700 text-xs font-semibold mb-2 uppercase tracking-widest">기술 선택 근거</h3>
             <ul className="text-slate-600 text-xs leading-relaxed space-y-1.5">
-              <li>• <strong className="text-slate-700">Next.js (App Router)</strong> — AI 뉴스·논문 콘텐츠 서비스 특성상 SEO와 초기 렌더링 속도가 핵심 요구사항이라 선택. localStorage JWT로 인해 실제 SSR이 제한된 한계는 트러블슈팅에서 설명</li>
+              <li>• <strong className="text-slate-700">Next.js (App Router)</strong> — AI 뉴스·논문 콘텐츠 서비스 특성상 SEO와 초기 렌더링 속도가 핵심 요구사항이라 선택</li>
               <li>• <strong className="text-slate-700">TanStack Query</strong> — 지역·날짜·카테고리 필터 조합이 많아 query key에 포함하면 필터별 캐시 자동 분리, 별도 무효화 로직 불필요</li>
               <li>• <strong className="text-slate-700">IntersectionObserver</strong> — scroll 이벤트 폴링 대비 브라우저 네이티브 최적화 API, 메인 스레드 부하 없이 무한 스크롤 구현</li>
             </ul>
